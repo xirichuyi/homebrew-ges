@@ -1,8 +1,8 @@
 cask "trackpad-ges" do
   arch arm: "arm64"
 
-  version "0.3.5"
-  sha256 "9e75e984e2c70f6f106d76cf1307186179d0d57e28b52289c5d9fed4dec88841"
+  version "0.3.6"
+  sha256 "2d30e0080ede85ea7d272a8bf9816cc10b284f74b9d2483c620d5ddf5b7d97d9"
 
   url "https://github.com/xirichuyi/homebrew-ges/releases/download/v#{version}/trackpad-ges-#{version}-#{arch}.tar.gz"
   name "trackpad-ges"
@@ -23,17 +23,15 @@ cask "trackpad-ges" do
   end
 
   caveats <<~EOS
-    首次运行：
-        ges init       # 自动跳系统设置授权 + 引导采集
+    第一次使用，直接敲：
+        ges
 
-    默认触发：按住 ⌥ Option + 画手势 + 松开
-        （需要：辅助功能 + 输入监控 两项权限）
+    会自动进入引导：授权 → 取手势名 → 选动作 → 画 5 次 → 装后台服务。
 
-    不想授权键盘权限？切到 Force Click 模式（重压触控板触发）：
-        ges trigger disable key
-        ges trigger enable force_click
+    默认触发：按住 ⌥ Option + 画手势 + 松开 Option
+    （需要：终端 App 在「辅助功能」+「输入监控」都勾上）
 
-    查看 / 调整所有触发器：
+    其他触发方式：
         ges trigger list
   EOS
 end
