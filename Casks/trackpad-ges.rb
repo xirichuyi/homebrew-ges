@@ -1,8 +1,8 @@
 cask "trackpad-ges" do
   arch arm: "arm64"
 
-  version "0.2.1"
-  sha256 "b98977ecd317844db97c0a32e3290f445b95e114dd441ceb026430604c2dfb3e"
+  version "0.3.0"
+  sha256 "4163d262ead9cd7fefa40d8d57d3037e8a28cb8cc0741f3c55578b89b79eb979"
 
   url "https://github.com/xirichuyi/homebrew-ges/releases/download/v#{version}/trackpad-ges-#{version}-#{arch}.tar.gz"
   name "trackpad-ges"
@@ -24,12 +24,16 @@ cask "trackpad-ges" do
 
   caveats <<~EOS
     首次运行：
-        ges init
+        ges init       # 自动跳系统设置授权 + 引导采集
 
-    操作方法（无需任何权限）：
-      1. 单指放到触控板上保持不动 ~0.3 秒
-      2. 听到 "叮" 一声进入录制
-      3. 画手势
-      4. 抬起手指
+    默认触发：按住 ⌥ Option + 画手势 + 松开
+        （需要：辅助功能 + 输入监控 两项权限）
+
+    不想授权键盘权限？切到 Force Click 模式（重压触控板触发）：
+        ges trigger disable key
+        ges trigger enable force_click
+
+    查看 / 调整所有触发器：
+        ges trigger list
   EOS
 end
