@@ -1,8 +1,8 @@
 cask "trackpad-ges" do
   arch arm: "arm64"
 
-  version "0.1.0"
-  sha256 "77a3af9f6f339105692de1e2d1cb629c9cb8e61e1dba0bd9d42ca16f662232fc"
+  version "0.2.0"
+  sha256 "a41b7bc801ca4a63aa0747528b3d51d5d97dda7328e9daa968a4f4570ac5bdc1"
 
   url "https://github.com/xirichuyi/homebrew-ges/releases/download/v#{version}/trackpad-ges-#{version}-#{arch}.tar.gz"
   name "trackpad-ges"
@@ -26,10 +26,10 @@ cask "trackpad-ges" do
     首次运行：
         ges init
 
-    需要给当前终端 App 授权（系统设置 → 隐私与安全性）：
-      · 辅助功能
-      · 输入监控
-
-    授权完成后，完全退出终端（Cmd+Q）重新打开。
+    操作方法（无需任何权限）：
+      1. 单指放到触控板上保持不动 ~0.3 秒
+      2. 听到 "叮" 一声进入录制
+      3. 画手势
+      4. 抬起手指
   EOS
 end
