@@ -1,37 +1,37 @@
 cask "trackpad-ges" do
   arch arm: "arm64"
 
-  version "0.4.1"
-  sha256 "2dd1529231b041a5a9558910977a8d0443d2dcb78b30695ef6ff0933974ac788"
+  version "1.0.0"
+  sha256 "aeedcb00b13d48e904389ac3be2f05157578eb4b4edc2ebdc6f64035db678b14"
 
-  url "https://github.com/xirichuyi/homebrew-ges/releases/download/v#{version}/trackpad-ges-#{version}-#{arch}.tar.gz"
-  name "trackpad-ges"
-  desc "Trackpad gesture recognition for macOS — draw a shape, run a command"
+  url "https://github.com/xirichuyi/homebrew-ges/releases/download/v#{version}/TrackpadGes-#{version}-#{arch}.zip"
+  name "TrackpadGes"
+  desc "Trackpad gesture recognition for macOS"
   homepage "https://github.com/xirichuyi/homebrew-ges"
 
-  depends_on macos: ">= :sonoma"
+  depends_on macos: ">= :tahoe"
   depends_on arch: :arm64
 
-  binary "ges"
+  app "TrackpadGes.app"
 
   postflight do
-    # PyInstaller 产物未签名，brew 下载后默认有 com.apple.quarantine，
-    # Gatekeeper 会直接 kill 进程。手动移除属性。
     system_command "/usr/bin/xattr",
-                   args: ["-d", "com.apple.quarantine", "#{staged_path}/ges"],
+                   args: ["-d", "-r", "com.apple.quarantine", "#{appdir}/TrackpadGes.app"],
                    must_succeed: false
   end
 
+  zap trash: [
+    "~/.ges",
+    "~/Library/LaunchAgents/com.xirichuyi.trackpad-ges.plist",
+  ]
+
   caveats <<~EOS
-    第一次使用，直接敲：
-        ges
+    第一次启动：在 Launchpad 找 TrackpadGes 双击，或：
+        open -a TrackpadGes
 
-    会自动进入引导：授权 → 取手势名 → 选动作 → 画 5 次 → 装后台服务。
+    会出现在屏幕顶部菜单栏 (✋ 图标)。
 
-    默认触发：按住 ⌥ Option + 画手势 + 松开 Option
-    （需要：终端 App 在「辅助功能」+「输入监控」都勾上）
-
-    其他触发方式：
-        ges trigger list
+    首次使用需要授权辅助功能（监听 ⌥ Option 键作为触发器）：
+        系统设置 → 隐私与安全性 → 辅助功能 → 添加 TrackpadGes
   EOS
 end
