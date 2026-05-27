@@ -1,10 +1,11 @@
 cask "trackpad-ges" do
   arch arm: "arm64"
 
-  version "1.0.0"
-  sha256 "aeedcb00b13d48e904389ac3be2f05157578eb4b4edc2ebdc6f64035db678b14"
+  version "1.0.1"
+  sha256 "2bc79eba468c1acd9043153a70b79a7c0426db7d00da720a286813ddec46acea"
 
   url "https://github.com/xirichuyi/homebrew-ges/releases/download/v#{version}/TrackpadGes-#{version}-#{arch}.zip"
+
   name "TrackpadGes"
   desc "Trackpad gesture recognition for macOS"
   homepage "https://github.com/xirichuyi/homebrew-ges"
