@@ -14,6 +14,14 @@ cask "trackpad-ges" do
 
   binary "ges"
 
+  postflight do
+    # PyInstaller 产物未签名，brew 下载后默认有 com.apple.quarantine，
+    # Gatekeeper 会直接 kill 进程。手动移除属性。
+    system_command "/usr/bin/xattr",
+                   args: ["-d", "com.apple.quarantine", "#{staged_path}/ges"],
+                   must_succeed: false
+  end
+
   caveats <<~EOS
     首次运行：
         ges init
