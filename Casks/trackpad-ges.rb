@@ -1,8 +1,8 @@
 cask "trackpad-ges" do
   arch arm: "arm64"
 
-  version "0.4.0"
-  sha256 "e8d46e403b2416bca9eb94a7950fd0a7a49b56d5b61f8bb1e6fe3ce7598fdb2e"
+  version "0.4.1"
+  sha256 "2dd1529231b041a5a9558910977a8d0443d2dcb78b30695ef6ff0933974ac788"
 
   url "https://github.com/xirichuyi/homebrew-ges/releases/download/v#{version}/trackpad-ges-#{version}-#{arch}.tar.gz"
   name "trackpad-ges"
